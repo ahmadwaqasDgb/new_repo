@@ -1,0 +1,58 @@
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc}
+
+\definecolor{maend}{RGB}{108,151,224}
+\definecolor{mainter}{RGB}{36,169,229}
+\definecolor{maedge}{RGB}{35,35,35}
+\definecolor{mainitial}{RGB}{28,150,28}
+
+\tikzset{
+  mastate/.style={
+    circle,
+    draw=maedge,
+    line width=0.55pt,
+    fill=maend,
+    minimum size=0.792cm,
+    inner sep=0pt,
+    text width=0.78cm,
+    align=center,
+    font=\fontsize{7.2pt}{8.6pt}\selectfont
+  },
+  mainternode/.style={
+    circle,
+    draw=maedge,
+    line width=0.6pt,
+    fill=mainter,
+    minimum size=0.0422cm,
+    inner sep=0pt
+  },
+  maedgelabel/.style={
+    font=\fontsize{5.6pt}{6.7pt}\selectfont,
+    fill=white,
+    inner sep=0.8pt,
+    text=black
+  }
+}
+
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[-{Stealth[length=2.2mm,width=1.8mm]}, draw=maedge, line width=0.6pt] (-0.996, 1.632) -- (0.204, 1.632);
+\draw[draw=maedge, line width=0.6pt] (0.996, 1.640) -- (8.166, 1.787);
+\draw[-{Stealth[length=2.2mm,width=1.8mm]}, draw=maedge, line width=0.6pt, dashed] (8.208, 1.786) .. controls (9.077, 1.740) and (10.960, 1.640) ..(11.829, 1.594);
+\draw[-{Stealth[length=2.2mm,width=1.8mm]}, draw=maedge, line width=0.6pt, dashed] (8.176, 1.769) .. controls (7.874, 2.297) and (1.858, 2.767) ..(0.978, 1.749);
+\draw[draw=maedge, line width=0.6pt] (12.612, 1.493) .. controls (13.090, 1.029) and (13.352, 0.745) .. (13.397, 0.640);
+\draw[-{Stealth[length=2.2mm,width=1.8mm]}, draw=maedge, line width=0.6pt, dashed] (13.361, 0.596) .. controls (13.249, 0.620) and (12.920, 0.824) .. (12.375, 1.206);
+\node[mastate, fill=maend, draw=mainitial, line width=1.6pt] (n_0132bc63_1889_457d_a472_20a2e9aa341b) at (0.600, 1.632) {l-1};
+\node[mastate, fill=maend, draw=maedge, line width=0.6pt] (b6367acf_8b18_44bd_aa6f_f64f9eec9166) at (12.224, 1.573) {l-2};
+\node[mainternode, fill=mainter] (eb998043_ba9d_4f73_8fce_be94af3bd1ee) at (8.187, 1.787) {};
+\node[mainternode, fill=mainter] (n_345bbb47_ab64_434b_baf2_e2f4217de865) at (13.400, 0.600) {};
+\node[maedgelabel, rotate=1.17] at (4.577, 1.923) {$\lambda=0.002283$};
+\node[maedgelabel, rotate=-3.04] at (10.031, 1.924) {1, $\iota\alpha_{2}$};
+\node[maedgelabel, rotate=-1.31] at (4.557, 2.110) {1};
+\node[maedgelabel, rotate=-47.41] at (13.340, 1.091) {$\lambda=1$};
+\node[anchor=north west, align=left, text width=12.80cm, font=\scriptsize, inner sep=0pt] at (0.600, -0.350) {$\iota\alpha_{2}$: target=true};
+\end{tikzpicture}
+\end{document}
