@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{document}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{>{\raggedright\arraybackslash\hspace{0pt}}p{0.321\textwidth}>{\raggedright\arraybackslash\hspace{0pt}}p{0.077\textwidth}>{\raggedright\arraybackslash\hspace{0pt}}p{0.077\textwidth}>{\raggedright\arraybackslash\hspace{0pt}}p{0.077\textwidth}>{\raggedright\arraybackslash\hspace{0pt}}p{0.086\textwidth}>{\raggedright\arraybackslash\hspace{0pt}}p{0.083\textwidth}>{\raggedright\arraybackslash\hspace{0pt}}p{0.083\textwidth}>{\raggedright\arraybackslash\hspace{0pt}}p{0.077\textwidth}}
+\toprule
+Id & Name & Value & Type & Bounded & Lower\_\allowbreak{}bound & Upper\_\allowbreak{}bound & Comment \\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & Value & Type & Bounded & Lower\_\allowbreak{}bound & Upper\_\allowbreak{}bound & Comment \\
+\midrule
+\endhead
+\bottomrule
+\multicolumn{8}{r}{\emph{Continued on next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+30532879a85b4bb6b20dbc870b286970 & d & w & int & False &  &  &  \\
+9a28618433ee4bedbca42c4de73a0e8c & f & e & int & False &  &  &  \\
+1c115e961829481b808e102042ffc37a & e1 & e & int & False &  &  &  \\
+\end{longtable}
+\normalsize
+\end{document}
