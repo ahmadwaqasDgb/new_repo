@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{document}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{>{\raggedright\arraybackslash\hspace{0pt}}p{0.481\textwidth}>{\raggedright\arraybackslash\hspace{0pt}}p{0.399\textwidth}}
+\toprule
+Name & Description \\
+\midrule
+\endfirsthead
+\toprule
+Name & Description \\
+\midrule
+\endhead
+\bottomrule
+\multicolumn{2}{r}{\emph{Continued on next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+SystemA &  \\
+ComponentA &  \\
+MotorA &  \\
+\end{longtable}
+\normalsize
+\end{document}
