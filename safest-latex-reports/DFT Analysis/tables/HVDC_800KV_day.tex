@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{document}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{>{\raggedright\arraybackslash\hspace{0pt}}p{0.191\textwidth}>{\raggedright\arraybackslash\hspace{0pt}}p{0.358\textwidth}>{\raggedright\arraybackslash\hspace{0pt}}p{0.331\textwidth}}
+\toprule
+Name & Value & Description \\
+\midrule
+\endfirsthead
+\toprule
+Name & Value & Description \\
+\midrule
+\endhead
+\bottomrule
+\multicolumn{3}{r}{\emph{Continued on next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+days & 365 & per year \\
+CT & 0.015/\allowbreak{}days & per day \\
+CVG & 0.13/\allowbreak{}days & per day \\
+BUS & 0.012/\allowbreak{}days & per day \\
+CB & 0.0028/\allowbreak{}days & per day \\
+HVDC\_\allowbreak{}LINE & 0.22/\allowbreak{}days & per day \\
+GE & 0.0053/\allowbreak{}days & per day \\
+DCF & 0.022/\allowbreak{}days & per day \\
+SR & 0.01/\allowbreak{}days & per day \\
+PCS & 0.012/\allowbreak{}days & per day \\
+SCS & 0.000054/\allowbreak{}days & per day \\
+APS & 0.0002/\allowbreak{}days & per day \\
+ACF\_\allowbreak{}A & 0.93/\allowbreak{}days & per day \\
+ACF\_\allowbreak{}B & 0.79/\allowbreak{}days & per day \\
+ACF\_\allowbreak{}C & 1.22/\allowbreak{}days & per day \\
+ACF\_\allowbreak{}D & 1.22/\allowbreak{}days & per day \\
+\end{longtable}
+\normalsize
+\end{document}
