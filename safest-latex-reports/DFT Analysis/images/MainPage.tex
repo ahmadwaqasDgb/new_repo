@@ -1,0 +1,279 @@
+\documentclass[tikz,border=6pt]{standalone}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc,arrows.meta}
+\pgfdeclarelayer{bg}
+\pgfsetlayers{bg,main}
+
+\definecolor{gateblue}{RGB}{95,140,220}
+\definecolor{gateorange}{RGB}{255,209,126}
+\definecolor{gategreen}{RGB}{137,191,114}
+\definecolor{gatered}{RGB}{224,89,92}
+\definecolor{gatecyan}{RGB}{60,160,210}
+\definecolor{gategray}{RGB}{195,195,195}
+\definecolor{gateoutline}{RGB}{70,70,70}
+\definecolor{gatepurple}{RGB}{202,92,226}
+\definecolor{gatepink}{RGB}{232,142,146}
+
+\newcommand{\dfttextfont}{\scriptsize}
+
+\tikzset{
+  gatebase/.style={
+    inner sep=0pt,
+    outer sep=0pt,
+    minimum width=2.35cm,
+    minimum height=1.60cm
+  },
+  labelbox/.style={
+    draw=gateoutline,
+    line width=0.4pt,
+    fill=white,
+    rectangle,
+    minimum width=1.62cm,
+    minimum height=0.34cm,
+    inner xsep=1pt,
+    inner ysep=0pt,
+    font=\dfttextfont,
+    align=center,
+    anchor=center,
+    text height=1.5ex,
+    text depth=.25ex,
+    outer sep=0pt
+  },
+  titlebox/.style={
+    draw=gateoutline,
+    line width=0.5pt,
+    fill=gateblue,
+    rectangle,
+    minimum width=2.35cm,
+    minimum height=0.42cm,
+    inner xsep=2pt,
+    inner ysep=2pt,
+    text width=2.05cm,
+    font=\dfttextfont,
+    text=white,
+    align=center,
+    anchor=center,
+    outer sep=0pt
+  },
+  titlebox_alt/.style={
+    draw=gateoutline,
+    line width=0.5pt,
+    fill=gateorange,
+    rectangle,
+    minimum width=2.35cm,
+    minimum height=0.42cm,
+    inner xsep=2pt,
+    inner ysep=2pt,
+    text width=2.05cm,
+    font=\dfttextfont,
+    text=black,
+    align=center,
+    anchor=center,
+    outer sep=0pt
+  },
+  titlebox_dyn/.style={
+    draw=gateoutline,
+    line width=0.5pt,
+    fill=gategreen,
+    rectangle,
+    minimum width=2.35cm,
+    minimum height=0.42cm,
+    inner xsep=2pt,
+    inner ysep=2pt,
+    text width=2.05cm,
+    font=\dfttextfont,
+    text=white,
+    align=center,
+    anchor=center,
+    outer sep=0pt
+  },
+  depbox/.style={
+    draw=gateoutline,
+    line width=0.5pt,
+    fill=gatered,
+    rectangle,
+    minimum width=2.35cm,
+    minimum height=0.42cm,
+    inner xsep=2pt,
+    inner ysep=2pt,
+    text width=2.05cm,
+    font=\dfttextfont,
+    text=white,
+    align=center,
+    anchor=center,
+    outer sep=0pt
+  },
+  modulebox/.style={
+    draw=gateoutline,
+    line width=0.5pt,
+    fill=gatecyan,
+    rectangle,
+    minimum width=2.35cm,
+    minimum height=0.42cm,
+    inner xsep=2pt,
+    inner ysep=2pt,
+    text width=2.05cm,
+    font=\dfttextfont,
+    text=white,
+    align=center,
+    anchor=center,
+    outer sep=0pt
+  },
+  mirrorbox/.style={
+    draw=gateoutline,
+    line width=0.5pt,
+    fill=gategray,
+    rectangle,
+    minimum width=2.35cm,
+    minimum height=0.42cm,
+    inner xsep=2pt,
+    inner ysep=2pt,
+    text width=2.05cm,
+    font=\dfttextfont,
+    text=black,
+    align=center,
+    anchor=center,
+    outer sep=0pt
+  },
+  ratebox/.style={
+    font=\dfttextfont,
+    inner sep=1pt
+  }
+}
+
+\newcommand{\ratelabel}[2]{#1}
+
+
+\newcommand{\gatebodyand}[2]{
+  \filldraw[fill=gateblue, draw=gateoutline, line width=0.5pt]
+    ([xshift=-0.56cm,yshift=-0.48cm]#1.center) --
+    ([xshift=0.56cm,yshift=-0.48cm]#1.center) --
+    ([xshift=0.56cm,yshift=0.00cm]#1.center)
+    arc[start angle=0,end angle=180,x radius=0.56cm,y radius=0.48cm] -- cycle;
+}
+
+\newcommand{\gatebodyor}[2]{
+  \filldraw[fill=gateblue, draw=gateoutline, line width=0.5pt]
+    ([xshift=-0.62cm,yshift=-0.50cm]#1.center)
+    .. controls ([xshift=-0.54cm,yshift=0.08cm]#1.center) and ([xshift=-0.28cm,yshift=0.48cm]#1.center) .. ([xshift=0cm,yshift=0.48cm]#1.center)
+    .. controls ([xshift=0.28cm,yshift=0.48cm]#1.center) and ([xshift=0.54cm,yshift=0.08cm]#1.center) .. ([xshift=0.62cm,yshift=-0.50cm]#1.center)
+    .. controls ([xshift=0.20cm,yshift=-0.18cm]#1.center) and ([xshift=-0.20cm,yshift=-0.18cm]#1.center) .. cycle;
+}
+
+\newcommand{\gatebodyvot}[2]{
+  \gatebodyand{#1}{#2}
+  \node[font=\dfttextfont\itshape, inner sep=0pt] at ([yshift=-0.30cm]#1.center) {#2};
+}
+
+\newcommand{\gatebodybe}[2]{
+  \filldraw[fill=gateblue, draw=gateoutline, line width=0.5pt] (#1.center) circle [radius=0.50cm];
+}
+
+\newcommand{\gatebodybas}[2]{
+  \filldraw[fill=gatepink, draw=gateoutline, line width=0.5pt] (#1.center) circle [radius=0.50cm];
+}
+
+\newcommand{\gatebodypand}[2]{
+  \filldraw[fill=gateorange, draw=gateoutline, line width=0.5pt]
+    ([xshift=-0.56cm,yshift=-0.48cm]#1.center) --
+    ([xshift=0.56cm,yshift=-0.48cm]#1.center) --
+    ([xshift=0.56cm,yshift=0.00cm]#1.center)
+    arc[start angle=0,end angle=180,x radius=0.56cm,y radius=0.48cm] -- cycle;
+  \draw[draw=gateoutline, line width=0.45pt]
+    ([xshift=-0.56cm,yshift=-0.48cm]#1.center) -- ([xshift=0cm,yshift=0.48cm]#1.center);
+  \draw[draw=gateoutline, line width=0.45pt]
+    ([xshift=0.56cm,yshift=-0.48cm]#1.center) -- ([xshift=0cm,yshift=0.48cm]#1.center);
+  \draw[draw=gateoutline, line width=0.45pt]
+    ([xshift=-0.56cm,yshift=-0.48cm]#1.center) -- ([xshift=0.56cm,yshift=-0.48cm]#1.center);
+}
+
+\newcommand{\gatebodypor}[2]{
+  \filldraw[fill=gateorange, draw=gateoutline, line width=0.5pt]
+    ([xshift=-0.62cm,yshift=-0.50cm]#1.center)
+    .. controls ([xshift=-0.54cm,yshift=0.08cm]#1.center) and ([xshift=-0.28cm,yshift=0.48cm]#1.center) .. ([xshift=0cm,yshift=0.48cm]#1.center)
+    .. controls ([xshift=0.28cm,yshift=0.48cm]#1.center) and ([xshift=0.54cm,yshift=0.08cm]#1.center) .. ([xshift=0.62cm,yshift=-0.50cm]#1.center)
+    .. controls ([xshift=0.20cm,yshift=-0.12cm]#1.center) and ([xshift=-0.20cm,yshift=-0.12cm]#1.center) .. cycle;
+  \draw[draw=gateoutline, line width=0.45pt]
+    ([xshift=-0.62cm,yshift=-0.50cm]#1.center) -- ([xshift=0cm,yshift=0.48cm]#1.center);
+  \draw[draw=gateoutline, line width=0.45pt]
+    ([xshift=0.62cm,yshift=-0.50cm]#1.center) -- ([xshift=0cm,yshift=0.48cm]#1.center);
+  \draw[draw=gateoutline, line width=0.45pt]
+    ([xshift=-0.62cm,yshift=-0.50cm]#1.center) -- ([xshift=0.62cm,yshift=-0.50cm]#1.center);
+}
+
+\newcommand{\gatebodysand}[2]{
+  \filldraw[fill=gatepurple, draw=gateoutline, line width=0.5pt]
+    ([xshift=-0.56cm,yshift=-0.48cm]#1.center) --
+    ([xshift=0.56cm,yshift=-0.48cm]#1.center) --
+    ([xshift=0.56cm,yshift=0.00cm]#1.center)
+    arc[start angle=0,end angle=180,x radius=0.56cm,y radius=0.48cm] -- cycle;
+  \draw[-{Stealth[length=2.5mm,width=2mm]}, line width=0.65pt]
+    ([xshift=-0.40cm,yshift=-0.36cm]#1.center) -- ([xshift=0.40cm,yshift=-0.36cm]#1.center);
+}
+
+\newcommand{\gatebodysor}[2]{
+  \filldraw[fill=gatepurple, draw=gateoutline, line width=0.5pt]
+    ([xshift=-0.62cm,yshift=-0.50cm]#1.center)
+    .. controls ([xshift=-0.54cm,yshift=0.08cm]#1.center) and ([xshift=-0.28cm,yshift=0.48cm]#1.center) .. ([xshift=0cm,yshift=0.48cm]#1.center)
+    .. controls ([xshift=0.28cm,yshift=0.48cm]#1.center) and ([xshift=0.54cm,yshift=0.08cm]#1.center) .. ([xshift=0.62cm,yshift=-0.50cm]#1.center)
+    .. controls ([xshift=0.20cm,yshift=-0.18cm]#1.center) and ([xshift=-0.20cm,yshift=-0.18cm]#1.center) .. cycle;
+  \draw[-{Stealth[length=2.5mm,width=2mm]}, line width=0.65pt]
+    ([xshift=-0.40cm,yshift=-0.38cm]#1.center) -- ([xshift=0.40cm,yshift=-0.38cm]#1.center);
+}
+
+\newcommand{\gatebodyspare}[2]{
+  \filldraw[fill=gateorange, draw=gateoutline, line width=0.5pt]
+    ([xshift=-0.68cm,yshift=-0.48cm]#1.center) rectangle ([xshift=0.64cm,yshift=0.48cm]#1.center);
+  \filldraw[fill=white, draw=gateoutline, line width=0.5pt]
+    ([xshift=0.34cm,yshift=-0.48cm]#1.center) rectangle ([xshift=0.64cm,yshift=-0.14cm]#1.center);
+}
+
+\newcommand{\gatebodydep}[2]{
+  \filldraw[fill=gatered, draw=gateoutline, line width=0.5pt]
+    ([xshift=-0.72cm,yshift=-0.48cm]#1.center) rectangle ([xshift=0.72cm,yshift=0.48cm]#1.center);
+  \filldraw[fill=white, draw=gateoutline, line width=0.5pt]
+    ([xshift=-0.72cm,yshift=-0.48cm]#1.center) --
+    ([xshift=-0.72cm,yshift=-0.14cm]#1.center) --
+    ([xshift=-0.34cm,yshift=-0.31cm]#1.center) -- cycle;
+  #2
+}
+
+\newcommand{\gatebodyseq}[2]{
+  \filldraw[fill=gategreen, draw=gateoutline, line width=0.5pt]
+    ([xshift=-0.68cm,yshift=-0.48cm]#1.center) rectangle ([xshift=0.68cm,yshift=0.48cm]#1.center);
+  \draw[-{Stealth[length=2.5mm,width=2mm]}, line width=0.65pt]
+    ([xshift=-0.40cm,yshift=-0.38cm]#1.center) -- ([xshift=0.40cm,yshift=-0.38cm]#1.center);
+}
+
+\newcommand{\gatebodymutex}[2]{
+  \filldraw[fill=gategreen, draw=gateoutline, line width=0.5pt]
+    ([xshift=-0.68cm,yshift=-0.48cm]#1.center) rectangle ([xshift=0.68cm,yshift=0.48cm]#1.center);
+  \draw[{Stealth[length=2.4mm,width=2mm]}-{Stealth[length=2.4mm,width=2mm]}, line width=0.7pt]
+    ([xshift=-0.44cm,yshift=-0.30cm]#1.center) -- ([xshift=0.44cm,yshift=-0.30cm]#1.center);
+}
+
+\newcommand{\gatebodymodule}[2]{
+  \filldraw[fill=gatecyan, draw=gateoutline, line width=0.5pt]
+    ([xshift=-0.56cm,yshift=-0.48cm]#1.center) --
+    ([xshift=0cm,yshift=0.48cm]#1.center) --
+    ([xshift=0.56cm,yshift=-0.48cm]#1.center) -- cycle;
+  #2
+}
+
+\newcommand{\gatebodymirror}[2]{
+  \filldraw[fill=gategray, draw=gateoutline, line width=0.5pt]
+    ([xshift=-0.68cm,yshift=-0.48cm]#1.center) rectangle ([xshift=0.68cm,yshift=0.48cm]#1.center);
+}
+
+\begin{document}
+\begin{tikzpicture}
+	\node[gatebase] (n_43482975) at (0.0, -0.0) {};
+	\gatebodybe{n_43482975}{}
+	\node[titlebox,anchor=south] (n_43482975_title) at (0.0, 0.7) {\makebox[2.05cm][c]{LOCA}};
+	\draw[line width=0.45pt] ([yshift=0.50cm]n_43482975.center) -- (n_43482975_title.south);
+	\node[labelbox] (n_43482975_label) at (n_43482975.center) {\makebox[1.54cm][c]{l11}};
+\begin{pgfonlayer}{bg}
+\end{pgfonlayer}
+\end{tikzpicture}
+\end{document}
